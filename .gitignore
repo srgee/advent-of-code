@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.so
+.pytest_cache/
+
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Mac
+*.swp
+.DS_Store
+input.txt
+
+# VS Code configuration
+.vscode/
