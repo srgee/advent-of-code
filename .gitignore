@@ -16,6 +16,8 @@ env/
 # Mac
 *.swp
 .DS_Store
+
+# AoC input
 input.txt
 
 # VS Code configuration
