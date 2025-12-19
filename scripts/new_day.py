@@ -24,8 +24,8 @@ def solve(data):
     
 
 if __name__ == '__main__':
-    print(f'Sample: {{solve(get_input('sample.txt'))}}')
-    print(f'Solution: {{solve(get_input('input.txt'))}}')
+    print(f'Sample: {solve(get_input('sample.txt'))}')
+    print(f'Solution: {solve(get_input('input.txt'))}')
 """
 
 PART2_TEMPLATE = """
@@ -49,8 +49,8 @@ def solve(data):
     
 
 if __name__ == '__main__':
-    print(f'Sample: {{solve(get_input('sample.txt'))}}')
-    print(f'Solution: {{solve(get_input('input.txt'))}}')
+    print(f'Sample: {solve(get_input('sample.txt'))}')
+    print(f'Solution: {solve(get_input('input.txt'))}')
 """
 
 
