@@ -12,7 +12,7 @@ def get_input(filename: str) -> str:
     file_path = Path(__file__).parent / filename
     with file_path.open() as f:
         input_lines = []
-        while line := f.readline()):
+        while line := f.readline():
             input_lines.append(line.strip())
     
     return input_lines
@@ -37,7 +37,7 @@ def get_input(filename: str) -> str:
     file_path = Path(__file__).parent / filename
     with file_path.open() as f:
         input_lines = []
-        while line := f.readline()):
+        while line := f.readline():
             input_lines.append(line.strip())
     
     return input_lines
