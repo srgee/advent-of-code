@@ -14,15 +14,14 @@ I try to keep things organized by year and day, so feel free to poke around!
 
 The folders are sorted by year, making it easy to find what you're looking for:
 
+```
 .
-├── 2023/
+├── 2025/
 │   ├── day01/
 │   ├── day02/
 │   └── ...
-├── 2024/
-│   ├── day01/
-│   └── ...
 └── README.md
+```
 
 # 🛠️ Running Solutions
 
@@ -30,17 +29,20 @@ If you want to take any of these for a spin:
 
 ```bash
 # Clone the repo:
-git clone https://github.com/your-username/advent-of-code.git
+git clone git@github.com:srgee/advent-of-code.git
 
 # Hop into a specific day:
-cd 2024/day01
+cd 2025/day01
+
+# Copy your puzzle input (not available in this repo)
+cp ~/downloads/input.txt .
 
 # Run the script:
-python solution.py
+python part1.py
 ```
 
 # Creating New Days
-Use the automation scriipts to create file structure automagically:
+Use the automation script to create file structure _automagically_:
 ```bash
 python scripts/new_day.py 5
 ```
