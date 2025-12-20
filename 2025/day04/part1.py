@@ -14,21 +14,21 @@ def get_input(filename: str) -> str:
     return input_lines
 
 
-def parse_input(data: list[str]) -> list[(int, int)]:
-    '''Return a list of coordinates (row, col) for paper rolls.'''
-    coordinates = []
+def parse_input(data: list[str]) -> set[tuple[int, int]]:
+    '''Return a set of coordinates (row, col) for paper rolls.'''
+    coordinates = set()
     for i, row in enumerate(data):
         for j, item in enumerate(row):
             if item == '@':
                 #print(f'{item} en coordenadas ({i, j})')
-                coordinates.append((i, j))
+                coordinates.add((i, j))
     
     return coordinates 
 
 
-def get_adjacents(row: int, col:int, dim: int) -> list[(int, int)]:
-    '''Return list of adjacents to the given point of a dim x dim grid.'''
-    adjacents = []
+def get_adjacents(row: int, col: int, dim: int) -> set[tuple[int, int]]:
+    '''Return set of adjacent cells to the given cell in a dim x dim grid.'''
+    adjacents = set()
     for i in range(-1, 2):
         for j in range (-1, 2):
             if (i == 0) & (j == 0):
@@ -36,27 +36,23 @@ def get_adjacents(row: int, col:int, dim: int) -> list[(int, int)]:
             new_row = row + i
             new_col = col + j
             if (0 <= new_row < dim) & (0 <= new_col < dim):
-                adjacents.append((new_row, new_col))
+                adjacents.add((new_row, new_col))
 
     return adjacents
 
 
-def solve(data: str) -> int:
+def solve(data: list[str]) -> int:
     accessibles = 0
-    rolls_coordinates = parse_input(data)
-    #print(rolls_coordinates)
-    for i, row in enumerate(data):
-        for j, item in enumerate(row):
-            if item != '@':
+    rolls = parse_input(data)
+    for i in range(len(data)):
+        for j in range(len(data)):
+            if (i, j) not in rolls:
                 continue
-            adjacents = get_adjacents(i, j, len(row))
-            #print(f'{len(adjacents)} adjacent positions to position {i, j}')
-            adjacent_rolls = [pos for pos in adjacents if pos in rolls_coordinates]
-            if len(adjacent_rolls) < 4:
-                accessibles += 1
 
-    return accessibles 
-            
+            if len(rolls & get_adjacents(i, j, len(data))) < 4:
+                accessibles += 1
+    
+    return accessibles
 
 if __name__ == '__main__':
     print(f'Sample: {solve(get_input('sample.txt'))}')
