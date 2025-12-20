@@ -44,7 +44,7 @@ def get_input(filename: str) -> str:
 
 
 def solve(data):
-    # TODO: implment solution
+    # TODO: implement solution
     pass
     
 
