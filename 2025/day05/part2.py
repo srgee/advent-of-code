@@ -1,22 +1,32 @@
-
-from pathlib import Path
-
-def get_input(filename: str) -> str:
-    '''Read input file and returns a list of text clean lines (removes end of line characters).'''
-    
-    file_path = Path(__file__).parent / filename
-    with file_path.open() as f:
-        input_lines = []
-        while line := f.readline():
-            input_lines.append(line.strip())
-    
-    return input_lines
+from part1 import get_input
 
 
 def solve(data):
-    # TODO: implement solution
-    pass
+    '''Part1 solution based on range objects does not scale (execution got aborted). Use list of lists and a merge interval algorithm instead.'''
+    sep_index = data.index('')
+
+    # Parse first part of the database as list of lists [start, end]
+    fresh_ranges = []
+    for i in range(sep_index):
+        start, end = map(int, data[i].split('-'))
+        fresh_ranges.append([start, end])
+    fresh_ranges.sort()
     
+    merged = [fresh_ranges[0]]
+    for current in fresh_ranges[1:]:
+        _, prev_end = merged[-1]
+        curr_start, curr_end = current
+        
+        # Check overlap
+        if curr_start <= prev_end:
+            # FMerge extending at the end of the list if necessary
+            merged[-1][1] = max(prev_end, curr_end)
+        else:
+            # Add new interval
+            merged.append(current)
+
+
+    return sum(end - start + 1 for start, end in merged)
 
 if __name__ == '__main__':
     print(f'Sample: {solve(get_input('sample.txt'))}')
