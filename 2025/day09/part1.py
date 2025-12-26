@@ -14,8 +14,20 @@ def get_input(filename: str) -> str:
 
 
 def solve(data):
-    # TODO: implment solution
-    pass
+    # Parse input data into a list of tuples (col, row)
+    reds = [tuple(map(int, coord.split(','))) for coord in data]
+    print(f'Input size: {len(reds)}')
+
+    # Find max area by brute force (all combinations)
+    max_area = 0
+    for i in range(len(reds)):
+        for j in range(i+1, len(reds)):
+            area = abs(reds[i][0] - reds[j][0] + 1) * abs(reds[i][1] - reds[j][1] + 1)
+            if area > max_area:
+                #print(f'Local max at {reds[i]}, {reds[j]}')
+                max_area = area
+
+    return max_area
     
 
 if __name__ == '__main__':
