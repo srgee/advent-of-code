@@ -26,12 +26,14 @@ def solve_machine(data: str) -> int:
     # Inequality constraint: xi >= 0
     res = linprog(obj_coeffs, A_eq=coefficients, b_eq=counters, bounds=(0, None), method='highs')
 
-    """ print(f'Buttons: {buttons}')
-    print(f'counters: {counters}')
-    print(f'=========== RESULT: {int(np.round(res.x).sum()) if res.success else 0}')
-    while move_on := input():
-        break
- """
+    """ 
+        print(f'Buttons: {buttons}')
+        print(f'counters: {counters}')
+        print(f'=========== RESULT: {int(np.round(res.x).sum()) if res.success else 0}')
+        while input():
+            break
+    """
+
     # Result must be an integer so we round the solution
     return int(np.round(res.x).sum()) if res.success else 0
 
